@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "number_parity": {
+      "NUMBER_PARITY00": {
+        "ad": "s14",
+        "iseven": false,
+        "number": "NUMBER01"
+      },
+      "NUMBER_PARITY01": {
+        "ad": "s28",
+        "iseven": false,
+        "number": "NUMBER01"
+      },
+      "NUMBER_PARITY02": {
+        "ad": "s3c",
+        "iseven": false,
+        "number": "NUMBER01"
+      }
+    }
+  },
+  "new": {
+    "number_parity": {
+      "number_parity_ref01": {
+        "ad": "s50",
+        "iseven": false
+      }
+    }
+  }
+}

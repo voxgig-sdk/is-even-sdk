@@ -1,0 +1,68 @@
+# Entity: number_parity
+
+main: kit: entity: number_parity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ad"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "iseven"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+  ]
+
+  name: "number_parity"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 6
+                kind: "param"
+                name: "number"
+                orig: "number"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/iseven/{number}/"
+          parts: [
+            "iseven"
+            "{number}"
+          ]
+          select: {
+            exist: [
+              "number"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "iseven"
+      ]
+    ]
+  }
+
+
+
+}

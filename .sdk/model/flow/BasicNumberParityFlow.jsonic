@@ -1,0 +1,32 @@
+# BasicNumberParityFlow
+
+main: kit: flow: BasicNumberParityFlow:
+{
+  entity: "number_parity",
+  kind: "basic",
+  name: "BasicNumberParityFlow",
+  step: [
+    {
+      input: {
+        ref: "number_parity_ref01",
+        srcdatavar: "number_parity_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "number_parity01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-number_parity_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNumberParityFlow"
+}

@@ -1,0 +1,125 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Is Even API",
+    "description": "The Is Even API checks whether a given integer is even or odd. It provides a simple endpoint where you can submit a number and receive a response indicating its parity.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "hello@isevenapi.xyz"
+    },
+    "termsOfService": "https://isevenapi.xyz/"
+  },
+  "servers": [
+    {
+      "url": "https://api.isevenapi.xyz/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/iseven/{number}/": {
+      "get": {
+        "summary": "Check if a number is even",
+        "description": "Returns whether a given number is even or odd. Allowed numbers depend on your API tier: Public (0-999,999), Premium (0-999,999,999), Enterprise (0-999,999,999,999). All tiers support negative numbers.",
+        "operationId": "isEven",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "description": "The number you want to check for even or odd parity",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 6
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with even/odd determination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "iseven": {
+                      "type": "boolean",
+                      "description": "True if the number is even, false if odd",
+                      "example": true
+                    },
+                    "ad": {
+                      "type": "string",
+                      "description": "Advertisement text (present in free tier, removed in Premium and Enterprise tiers)",
+                      "example": "Buy isEvenCoin, the hottest new cryptocurrency!"
+                    }
+                  },
+                  "required": [
+                    "iseven"
+                  ]
+                },
+                "examples": {
+                  "evenNumber": {
+                    "summary": "Even number response",
+                    "value": {
+                      "iseven": true,
+                      "ad": "Buy isEvenCoin, the hottest new cryptocurrency!"
+                    }
+                  },
+                  "oddNumber": {
+                    "summary": "Odd number response",
+                    "value": {
+                      "iseven": false,
+                      "ad": "Buy isEvenCoin, the hottest new cryptocurrency!"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid number format or out of range for tier"
+          },
+          "429": {
+            "description": "Rate limit exceeded"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "tags": [
+          "Number Parity"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "IsEvenResponse": {
+        "type": "object",
+        "properties": {
+          "iseven": {
+            "type": "boolean",
+            "description": "True if the number is even, false if odd"
+          },
+          "ad": {
+            "type": "string",
+            "description": "Advertisement text (only present in free tier)"
+          }
+        },
+        "required": [
+          "iseven"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Number Parity",
+      "description": "Operations for checking if numbers are even or odd"
+    }
+  ],
+  "externalDocs": {
+    "description": "Official API Documentation",
+    "url": "https://isevenapi.xyz/"
+  }
+}

@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "hello@isevenapi.xyz"
+      }
+      description: "The Is Even API checks whether a given integer is even or odd. It provides a simple endpoint where you can submit a number and receive a response indicating its parity."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.isevenapi.xyz/api"
+        }
+      ]
+      termsOfService: "https://isevenapi.xyz/"
+      title: "Is Even API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

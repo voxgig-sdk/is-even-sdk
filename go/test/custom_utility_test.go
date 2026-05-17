@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/is-even-sdk"
+	sdk "github.com/voxgig-sdk/is-even-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {

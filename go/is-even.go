@@ -1,10 +1,10 @@
 package voxgigisevensdk
 
 import (
-	"github.com/voxgig-sdk/is-even-sdk/core"
-	"github.com/voxgig-sdk/is-even-sdk/entity"
-	"github.com/voxgig-sdk/is-even-sdk/feature"
-	_ "github.com/voxgig-sdk/is-even-sdk/utility"
+	"github.com/voxgig-sdk/is-even-sdk/go/core"
+	"github.com/voxgig-sdk/is-even-sdk/go/entity"
+	"github.com/voxgig-sdk/is-even-sdk/go/feature"
+	_ "github.com/voxgig-sdk/is-even-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

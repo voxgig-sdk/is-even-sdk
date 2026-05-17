@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/is-even-sdk/core"
+	"github.com/voxgig-sdk/is-even-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/is-even-sdk/go/utility/struct"
 )
 
 type NumberParityEntity struct {

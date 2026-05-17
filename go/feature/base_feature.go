@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/is-even-sdk/core"
+	"github.com/voxgig-sdk/is-even-sdk/go/core"
 )
 
 type BaseFeature struct {

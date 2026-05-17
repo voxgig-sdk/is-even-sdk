@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/is-even-sdk"
-	"github.com/voxgig-sdk/is-even-sdk/core"
+	sdk "github.com/voxgig-sdk/is-even-sdk/go"
+	"github.com/voxgig-sdk/is-even-sdk/go/core"
 )
 
 func TestNumberParityDirect(t *testing.T) {

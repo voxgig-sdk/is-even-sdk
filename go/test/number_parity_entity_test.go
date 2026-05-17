@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/is-even-sdk"
-	"github.com/voxgig-sdk/is-even-sdk/core"
+	sdk "github.com/voxgig-sdk/is-even-sdk/go"
+	"github.com/voxgig-sdk/is-even-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/is-even-sdk/go/utility/struct"
 )
 
 func TestNumberParityEntity(t *testing.T) {

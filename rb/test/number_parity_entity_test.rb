@@ -82,7 +82,6 @@ def number_parity_basic_setup(extra)
     "ISEVEN_TEST_NUMBER_PARITY_ENTID" => idmap,
     "ISEVEN_TEST_LIVE" => "FALSE",
     "ISEVEN_TEST_EXPLAIN" => "FALSE",
-    "ISEVEN_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +93,6 @@ def number_parity_basic_setup(extra)
   if env["ISEVEN_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ISEVEN_APIKEY"],
       },
       extra || {},
     ])

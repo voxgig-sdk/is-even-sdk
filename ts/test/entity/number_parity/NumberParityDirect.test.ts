@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ISEVEN_TEST_NUMBER_PARITY_ENTID': {},
     'ISEVEN_TEST_LIVE': 'FALSE',
-    'ISEVEN_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ISEVEN_TEST_LIVE
 
   if (live) {
     const client = new IsEvenSDK({
-      apikey: env.ISEVEN_APIKEY,
     })
 
     let idmap: any = env['ISEVEN_TEST_NUMBER_PARITY_ENTID']

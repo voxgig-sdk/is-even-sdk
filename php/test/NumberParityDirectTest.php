@@ -75,14 +75,12 @@ function number_parity_direct_setup($mockres)
     $env = Runner::env_override([
         "ISEVEN_TEST_NUMBER_PARITY_ENTID" => [],
         "ISEVEN_TEST_LIVE" => "FALSE",
-        "ISEVEN_APIKEY" => "NONE",
     ]);
 
     $live = $env["ISEVEN_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ISEVEN_APIKEY"],
         ];
         $client = new IsEvenSDK($merged_opts);
         return [

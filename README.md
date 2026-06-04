@@ -1,9 +1,96 @@
 # IsEven SDK
 
+Check whether an integer is even or odd via a single GET request
 
+> TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
 
-Available for [Golang](go/) and [Go CLI](go-cli/) and [Go MCP server](go-mcp/) and [Lua](lua/) and [PHP](php/) and [Python](py/) and [Ruby](rb/) and [TypeScript](ts/).
+## About Is Even API
 
+The [Is Even API](https://isevenapi.xyz/) is a small joke/utility web service that answers a single question: is the number you sent even? It is hosted at `https://api.isevenapi.xyz/api` and is open to the public without authentication.
+
+What you get from the API:
+
+- A single `GET /iseven/{number}/` endpoint that returns JSON.
+- An `iseven` boolean field indicating parity of the integer you passed.
+- An `ad` string field on the free tier, containing a sponsored message.
+
+The documentation describes three tiers (Public/free, Premium, Enterprise) that differ in the maximum supported integer range; the free tier covers `0` to `999,999`. Negative numbers are supported. CORS is enabled, no API key is required for the free tier, and rate limits are not published.
+
+## Try it
+
+**TypeScript**
+```bash
+npm install is-even
+```
+
+**Python**
+```bash
+pip install is-even-sdk
+```
+
+**PHP**
+```bash
+composer require voxgig/is-even-sdk
+```
+
+**Golang**
+```bash
+go get github.com/voxgig-sdk/is-even-sdk/go
+```
+
+**Ruby**
+```bash
+gem install is-even-sdk
+```
+
+**Lua**
+```bash
+luarocks install is-even-sdk
+```
+
+## 30-second quickstart
+
+### TypeScript
+
+```ts
+import { IsEvenSDK } from 'is-even'
+
+const client = new IsEvenSDK({})
+
+```
+
+See the [TypeScript README](ts/README.md) for the
+full guide, or scroll down for the same example in other languages.
+
+## What's in the box
+
+| Surface | Use it for | Path |
+| --- | --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
+| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+
+## Use it from an AI agent (MCP)
+
+The generated MCP server exposes every operation in this SDK as an
+[MCP](https://modelcontextprotocol.io) tool that Claude, Cursor or Cline
+can call directly. Build and register it:
+
+```bash
+cd go-mcp && go build -o is-even-mcp .
+```
+
+Then add it to your agent's MCP config (Claude Desktop, Cursor, etc.):
+
+```json
+{
+  "mcpServers": {
+    "is-even": {
+      "command": "/abs/path/to/is-even-mcp"
+    }
+  }
+}
+```
 
 ## Entities
 
@@ -11,75 +98,24 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **NumberParity** |  | `/iseven/{number}/` |
+| **NumberParity** | Represents the even/odd check for a single integer; served by `GET /iseven/{number}/` and returning a JSON object with an `iseven` boolean (plus an `ad` string on the free tier). | `/iseven/{number}/` |
 
-Each entity supports the following operations where available: **load**, **list**, **create**,
-**update**, and **remove**.
+Each entity supports the following operations where available: **load**,
+**list**, **create**, **update**, and **remove**.
 
+## Quickstart in other languages
 
-## Architecture
+### Python
 
-### Entity-operation model
+```python
+from iseven_sdk import IsEvenSDK
 
-Every SDK call follows the same pipeline:
-
-1. **Point** — resolve the API endpoint from the operation definition.
-2. **Spec** — build the HTTP specification (URL, method, headers, body).
-3. **Request** — send the HTTP request.
-4. **Response** — receive and parse the response.
-5. **Result** — extract the result data for the caller.
-
-At each stage a feature hook fires (e.g. `PrePoint`, `PreSpec`,
-`PreRequest`), allowing features to inspect or modify the pipeline.
-
-### Features
-
-Features are hook-based middleware that extend SDK behaviour.
-
-| Feature | Purpose |
-| --- | --- |
-| **TestFeature** | In-memory mock transport for testing without a live server |
-
-You can add custom features by passing them in the `extend` option at
-construction time.
-
-### Direct and Prepare
-
-For endpoints not covered by the entity model, use the low-level methods:
-
-- **`direct(fetchargs)`** — build and send an HTTP request in one step.
-- **`prepare(fetchargs)`** — build the request without sending it.
-
-Both accept a map with `path`, `method`, `params`, `query`, `headers`,
-and `body`.
+client = IsEvenSDK({})
 
 
-## Quick start
-
-### Golang
-
-```go
-import sdk "github.com/voxgig-sdk/is-even-sdk/go"
-
-client := sdk.NewIsEvenSDK(map[string]any{
-    "apikey": os.Getenv("IS-EVEN_APIKEY"),
-})
-
-```
-
-### Lua
-
-```lua
-local sdk = require("is-even_sdk")
-
-local client = sdk.new({
-  apikey = os.getenv("IS-EVEN_APIKEY"),
-})
-
-
--- Load a specific numberparity
-local numberparity, err = client:NumberParity(nil):load(
-  { id = "example_id" }, nil
+# Load a specific numberparity
+numberparity, err = client.NumberParity(None).load(
+    {"id": "example_id"}, None
 )
 ```
 
@@ -89,9 +125,7 @@ local numberparity, err = client:NumberParity(nil):load(
 <?php
 require_once 'iseven_sdk.php';
 
-$client = new IsEvenSDK([
-    "apikey" => getenv("IS-EVEN_APIKEY"),
-]);
+$client = new IsEvenSDK([]);
 
 
 // Load a specific numberparity
@@ -100,21 +134,13 @@ $client = new IsEvenSDK([
 );
 ```
 
-### Python
+### Golang
 
-```python
-import os
-from iseven_sdk import IsEvenSDK
+```go
+import sdk "github.com/voxgig-sdk/is-even-sdk/go"
 
-client = IsEvenSDK({
-    "apikey": os.environ.get("IS-EVEN_APIKEY"),
-})
+client := sdk.NewIsEvenSDK(map[string]any{})
 
-
-# Load a specific numberparity
-numberparity, err = client.NumberParity(None).load(
-    {"id": "example_id"}, None
-)
 ```
 
 ### Ruby
@@ -122,9 +148,7 @@ numberparity, err = client.NumberParity(None).load(
 ```ruby
 require_relative "IsEven_sdk"
 
-client = IsEvenSDK.new({
-  "apikey" => ENV["IS-EVEN_APIKEY"],
-})
+client = IsEvenSDK.new({})
 
 
 # Load a specific numberparity
@@ -133,38 +157,39 @@ numberparity, err = client.NumberParity(nil).load(
 )
 ```
 
-### TypeScript
-
-```ts
-import { IsEvenSDK } from 'is-even'
-
-const client = new IsEvenSDK({
-  apikey: process.env.IS-EVEN_APIKEY,
-})
-
-```
-
-
-## Testing
-
-Both SDKs provide a test mode that replaces the HTTP transport with an
-in-memory mock, so tests run without a network connection.
-
-### Golang
-
-```go
-client := sdk.TestSDK(nil, nil)
-result, err := client.NumberParity(nil).Load(
-    map[string]any{"id": "test01"}, nil,
-)
-```
-
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:NumberParity(nil):load(
-  { id = "test01" }, nil
+local sdk = require("is-even_sdk")
+
+local client = sdk.new({})
+
+
+-- Load a specific numberparity
+local numberparity, err = client:NumberParity(nil):load(
+  { id = "example_id" }, nil
+)
+```
+
+## Unit testing in offline mode
+
+Every SDK ships a test mode that swaps the HTTP transport for an
+in-memory mock, so unit tests run offline.
+
+### TypeScript
+
+```ts
+const client = IsEvenSDK.test()
+const result = await client.NumberParity().load({ id: 'test01' })
+// result.ok === true, result.data contains mock data
+```
+
+### Python
+
+```python
+client = IsEvenSDK.test(None, None)
+result, err = client.NumberParity(None).load(
+    {"id": "test01"}, None
 )
 ```
 
@@ -177,12 +202,12 @@ $client = IsEvenSDK::test(null, null);
 );
 ```
 
-### Python
+### Golang
 
-```python
-client = IsEvenSDK.test(None, None)
-result, err = client.NumberParity(None).load(
-    {"id": "test01"}, None
+```go
+client := sdk.TestSDK(nil, nil)
+result, err := client.NumberParity(nil).Load(
+    map[string]any{"id": "test01"}, nil,
 )
 ```
 
@@ -195,14 +220,46 @@ result, err = client.NumberParity(nil).load(
 )
 ```
 
-### TypeScript
+### Lua
 
-```ts
-const client = IsEvenSDK.test()
-const result = await client.NumberParity().load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+```lua
+local client = sdk.test(nil, nil)
+local result, err = client:NumberParity(nil):load(
+  { id = "test01" }, nil
+)
 ```
 
+## How it works
+
+Every SDK call runs the same five-stage pipeline:
+
+1. **Point** — resolve the API endpoint from the operation definition.
+2. **Spec** — build the HTTP specification (URL, method, headers, body).
+3. **Request** — send the HTTP request.
+4. **Response** — receive and parse the response.
+5. **Result** — extract the result data for the caller.
+
+A feature hook fires at each stage (e.g. `PrePoint`, `PreSpec`,
+`PreRequest`), so features can inspect or modify the pipeline without
+forking the SDK.
+
+### Features
+
+| Feature | Purpose |
+| --- | --- |
+| **TestFeature** | In-memory mock transport for testing without a live server |
+
+Pass custom features via the `extend` option at construction time.
+
+### Direct and Prepare
+
+For endpoints the entity model doesn't cover, use the low-level methods:
+
+- **`direct(fetchargs)`** — build and send an HTTP request in one step.
+- **`prepare(fetchargs)`** — build the request without sending it.
+
+Both accept a map with `path`, `method`, `params`, `query`,
+`headers`, and `body`. See the [How-to guides](#how-to-guides) below.
 
 ## How-to guides
 
@@ -210,21 +267,22 @@ const result = await client.NumberParity().load({ id: 'test01' })
 
 When the entity interface does not cover an endpoint, use `direct`:
 
-**Go:**
-```go
-result, err := client.Direct(map[string]any{
-    "path":   "/api/resource/{id}",
-    "method": "GET",
-    "params": map[string]any{"id": "example"},
+**TypeScript:**
+```ts
+const result = await client.direct({
+  path: '/api/resource/{id}',
+  method: 'GET',
+  params: { id: 'example' },
 })
+console.log(result.data)
 ```
 
-**Lua:**
-```lua
-local result, err = client:direct({
-  path = "/api/resource/{id}",
-  method = "GET",
-  params = { id = "example" },
+**Python:**
+```python
+result, err = client.direct({
+    "path": "/api/resource/{id}",
+    "method": "GET",
+    "params": {"id": "example"},
 })
 ```
 
@@ -237,12 +295,12 @@ local result, err = client:direct({
 ]);
 ```
 
-**Python:**
-```python
-result, err = client.direct({
-    "path": "/api/resource/{id}",
+**Go:**
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
     "method": "GET",
-    "params": {"id": "example"},
+    "params": map[string]any{"id": "example"},
 })
 ```
 
@@ -255,25 +313,32 @@ result, err = client.direct({
 })
 ```
 
-**TypeScript:**
-```ts
-const result = await client.direct({
-  path: '/api/resource/{id}',
-  method: 'GET',
-  params: { id: 'example' },
+**Lua:**
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example" },
 })
-console.log(result.data)
 ```
 
+## Per-language documentation
 
-## Language-specific documentation
+- [TypeScript](ts/README.md)
+- [Python](py/README.md)
+- [PHP](php/README.md)
+- [Golang](go/README.md)
+- [Ruby](rb/README.md)
+- [Lua](lua/README.md)
 
-- [Golang SDK](go/README.md)
-- [Go CLI SDK](go-cli/README.md)
-- [Go MCP server SDK](go-mcp/README.md)
-- [Lua SDK](lua/README.md)
-- [PHP SDK](php/README.md)
-- [Python SDK](py/README.md)
-- [Ruby SDK](rb/README.md)
-- [TypeScript SDK](ts/README.md)
+## Using the Is Even API
 
+- Upstream: [https://isevenapi.xyz/](https://isevenapi.xyz/)
+
+- No explicit open-source licence is published on the API homepage.
+- The homepage shows a copyright notice: (c) 2020 Tanner.
+- Treat the service as a third-party hosted API; review the homepage before redistribution or commercial use.
+
+---
+
+Generated from the Is Even API OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).

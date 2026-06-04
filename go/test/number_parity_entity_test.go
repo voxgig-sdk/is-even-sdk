@@ -117,7 +117,6 @@ func number_parityBasicSetup(extra map[string]any) *entityTestSetup {
 		"ISEVEN_TEST_NUMBER_PARITY_ENTID": idmap,
 		"ISEVEN_TEST_LIVE":      "FALSE",
 		"ISEVEN_TEST_EXPLAIN":   "FALSE",
-		"ISEVEN_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ISEVEN_TEST_NUMBER_PARITY_ENTID"])
@@ -128,7 +127,6 @@ func number_parityBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ISEVEN_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ISEVEN_APIKEY"],
 			},
 			extra,
 		})

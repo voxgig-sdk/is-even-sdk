@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/is-even",
-  "description": "IsEven SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Is Even public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "is-even"],
+  "homepage": "https://github.com/voxgig-sdk/is-even-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/is-even-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/is-even-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

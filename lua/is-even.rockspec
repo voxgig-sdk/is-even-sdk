@@ -8,12 +8,14 @@ source = {
   dir = "is-even-sdk/lua"
 }
 description = {
-  summary = "IsEven SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Is Even public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/is-even-sdk",
+  issues_url = "https://github.com/voxgig-sdk/is-even-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "is-even" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

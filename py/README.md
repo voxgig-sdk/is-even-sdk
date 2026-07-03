@@ -10,7 +10,7 @@ The Python SDK for the IsEven API — an entity-oriented client following Python
 
 ## Install
 ```bash
-pip install is-even-sdk
+pip install voxgig-sdk-is-even
 ```
 
 Or install from source:

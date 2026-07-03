@@ -10,13 +10,13 @@ The Ruby SDK for the IsEven API — an entity-oriented client using idiomatic Ru
 
 ## Install
 ```bash
-gem install is-even-sdk
+gem install voxgig-sdk-is-even
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "is-even-sdk"
+gem "voxgig-sdk-is-even"
 ```
 
 Then run:

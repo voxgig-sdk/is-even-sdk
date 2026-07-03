@@ -10,7 +10,7 @@ The PHP SDK for the IsEven API — an entity-oriented client using PHP conventio
 
 ## Install
 ```bash
-composer require voxgig/is-even-sdk
+composer require voxgig-sdk/is-even
 ```
 
 

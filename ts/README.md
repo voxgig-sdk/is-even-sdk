@@ -10,7 +10,7 @@ The TypeScript SDK for the IsEven API — a type-safe, entity-oriented client wi
 
 ## Install
 ```bash
-npm install is-even
+npm install @voxgig-sdk/is-even
 ```
 ## Tutorial: your first API call
 

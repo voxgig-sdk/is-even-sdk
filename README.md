@@ -1,20 +1,8 @@
 # IsEven SDK
 
-Check whether an integer is even or odd via a single GET request
+Is Even API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Is Even API
-
-The [Is Even API](https://isevenapi.xyz/) is a small joke/utility web service that answers a single question: is the number you sent even? It is hosted at `https://api.isevenapi.xyz/api` and is open to the public without authentication.
-
-What you get from the API:
-
-- A single `GET /iseven/{number}/` endpoint that returns JSON.
-- An `iseven` boolean field indicating parity of the integer you passed.
-- An `ad` string field on the free tier, containing a sponsored message.
-
-The documentation describes three tiers (Public/free, Premium, Enterprise) that differ in the maximum supported integer range; the free tier covers `0` to `999,999`. Negative numbers are supported. CORS is enabled, no API key is required for the free tier, and rate limits are not published.
 
 ## Try it
 
@@ -48,27 +36,31 @@ gem install is-even-sdk
 luarocks install is-even-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { IsEvenSDK } from 'is-even'
 
-const client = new IsEvenSDK({})
+const client = new IsEvenSDK({
+  apikey: process.env.IS-EVEN_APIKEY,
+})
 
+// Load numberparity data
+const numberparity = await client.NumberParity().load({})
+console.log(numberparity.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **NumberParity** | Represents the even/odd check for a single integer; served by `GET /iseven/{number}/` and returning a JSON object with an `iseven` boolean (plus an `ad` string on the free tier). | `/iseven/{number}/` |
+| **NumberParity** |  | `/iseven/{number}/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from iseven_sdk import IsEvenSDK
 
-client = IsEvenSDK({})
+client = IsEvenSDK({
+    "apikey": os.environ.get("IS-EVEN_APIKEY"),
+})
 
 
 # Load a specific numberparity
-numberparity, err = client.NumberParity(None).load(
-    {"id": "example_id"}, None
-)
+numberparity, err = client.NumberParity().load({"id": "example_id"})
+print(numberparity)
 ```
 
 ### PHP
@@ -125,13 +119,14 @@ numberparity, err = client.NumberParity(None).load(
 <?php
 require_once 'iseven_sdk.php';
 
-$client = new IsEvenSDK([]);
+$client = new IsEvenSDK([
+    "apikey" => getenv("IS-EVEN_APIKEY"),
+]);
 
 
 // Load a specific numberparity
-[$numberparity, $err] = $client->NumberParity(null)->load(
-    ["id" => "example_id"], null
-);
+[$numberparity, $err] = $client->NumberParity()->load(["id" => "example_id"]);
+print_r($numberparity);
 ```
 
 ### Golang
@@ -139,8 +134,13 @@ $client = new IsEvenSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/is-even-sdk/go"
 
-client := sdk.NewIsEvenSDK(map[string]any{})
+client := sdk.NewIsEvenSDK(map[string]any{
+    "apikey": os.Getenv("IS-EVEN_APIKEY"),
+})
 
+// Load numberparity data
+numberparity, err := client.NumberParity(nil).Load(map[string]any{}, nil)
+fmt.Println(numberparity)
 ```
 
 ### Ruby
@@ -148,13 +148,14 @@ client := sdk.NewIsEvenSDK(map[string]any{})
 ```ruby
 require_relative "IsEven_sdk"
 
-client = IsEvenSDK.new({})
+client = IsEvenSDK.new({
+  "apikey" => ENV["IS-EVEN_APIKEY"],
+})
 
 
 # Load a specific numberparity
-numberparity, err = client.NumberParity(nil).load(
-  { "id" => "example_id" }, nil
-)
+numberparity, err = client.NumberParity().load({ "id" => "example_id" })
+puts numberparity
 ```
 
 ### Lua
@@ -162,13 +163,14 @@ numberparity, err = client.NumberParity(nil).load(
 ```lua
 local sdk = require("is-even_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("IS-EVEN_APIKEY"),
+})
 
 
 -- Load a specific numberparity
-local numberparity, err = client:NumberParity(nil):load(
-  { id = "example_id" }, nil
-)
+local numberparity, err = client:NumberParity():load({ id = "example_id" })
+print(numberparity)
 ```
 
 ## Unit testing in offline mode
@@ -187,25 +189,21 @@ const result = await client.NumberParity().load({ id: 'test01' })
 ### Python
 
 ```python
-client = IsEvenSDK.test(None, None)
-result, err = client.NumberParity(None).load(
-    {"id": "test01"}, None
-)
+client = IsEvenSDK.test()
+result, err = client.NumberParity().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = IsEvenSDK::test(null, null);
-[$result, $err] = $client->NumberParity(null)->load(
-    ["id" => "test01"], null
-);
+$client = IsEvenSDK::test();
+[$result, $err] = $client->NumberParity()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.NumberParity(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -214,19 +212,15 @@ result, err := client.NumberParity(nil).Load(
 ### Ruby
 
 ```ruby
-client = IsEvenSDK.test(nil, nil)
-result, err = client.NumberParity(nil).load(
-  { "id" => "test01" }, nil
-)
+client = IsEvenSDK.test
+result, err = client.NumberParity().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:NumberParity(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:NumberParity():load({ id = "test01" })
 ```
 
 ## How it works
@@ -330,14 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Is Even API
-
-- Upstream: [https://isevenapi.xyz/](https://isevenapi.xyz/)
-
-- No explicit open-source licence is published on the API homepage.
-- The homepage shows a copyright notice: (c) 2020 Tanner.
-- Treat the service as a third-party hosted API; review the homepage before redistribution or commercial use.
 
 ---
 

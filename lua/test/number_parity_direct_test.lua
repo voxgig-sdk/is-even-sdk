@@ -70,12 +70,14 @@ function number_parity_direct_setup(mockres)
   local env = runner.env_override({
     ["ISEVEN_TEST_NUMBER_PARITY_ENTID"] = {},
     ["ISEVEN_TEST_LIVE"] = "FALSE",
+    ["ISEVEN_APIKEY"] = "NONE",
   })
 
   local live = env["ISEVEN_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["ISEVEN_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://api.isevenapi.xyz/api",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -25,36 +28,38 @@ local function make_config()
       ["number_parity"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "ad",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 0,
           },
           {
+            ["active"] = true,
             ["name"] = "iseven",
             ["req"] = true,
             ["type"] = "`$BOOLEAN`",
-            ["active"] = true,
             ["index$"] = 1,
           },
         },
         ["name"] = "number_parity",
         ["op"] = {
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["example"] = 6,
                       ["kind"] = "param",
                       ["name"] = "number",
                       ["orig"] = "number",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -73,11 +78,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },

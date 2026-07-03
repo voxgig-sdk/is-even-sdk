@@ -1,6 +1,11 @@
 # IsEven Python SDK
 
-The Python SDK for the IsEven API. Provides an entity-oriented interface following Pythonic conventions.
+
+
+The Python SDK for the IsEven API — an entity-oriented client following Pythonic conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -23,15 +28,18 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
+import os
 from iseven_sdk import IsEvenSDK
 
-client = IsEvenSDK({})
+client = IsEvenSDK({
+    "apikey": os.environ.get("IS-EVEN_APIKEY"),
+})
 ```
 
 ### 3. Load a numberparity
 
 ```python
-result, err = client.NumberParity(None).load({"id": "example_id"}, None)
+result, err = client.NumberParity().load({"id": "example_id"})
 if err:
     raise Exception(err)
 print(result)
@@ -79,11 +87,9 @@ print(fetchdef["headers"])
 Create a mock client for unit testing — no server required:
 
 ```python
-client = IsEvenSDK.test(None, None)
+client = IsEvenSDK.test()
 
-result, err = client.IsEven(None).load(
-    {"id": "test01"}, None
-)
+result, err = client.IsEven().load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -114,6 +120,7 @@ Create a `.env.local` file at the project root:
 
 ```
 IS-EVEN_TEST_LIVE=TRUE
+IS-EVEN_APIKEY=<your-key>
 ```
 
 Then run:
@@ -137,6 +144,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

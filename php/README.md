@@ -1,6 +1,11 @@
 # IsEven PHP SDK
 
-The PHP SDK for the IsEven API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the IsEven API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'iseven_sdk.php';
 
-$client = new IsEvenSDK([]);
+$client = new IsEvenSDK([
+    "apikey" => getenv("IS-EVEN_APIKEY"),
+]);
 ```
 
 ### 3. Load a numberparity
 
 ```php
-[$result, $err] = $client->NumberParity(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->NumberParity()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -72,11 +79,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = IsEvenSDK::test(null, null);
+$client = IsEvenSDK::test();
 
-[$result, $err] = $client->IsEven(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->IsEven()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -111,6 +116,7 @@ Create a `.env.local` file at the project root:
 
 ```
 IS-EVEN_TEST_LIVE=TRUE
+IS-EVEN_APIKEY=<your-key>
 ```
 
 Then run:
@@ -133,6 +139,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

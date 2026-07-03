@@ -110,12 +110,14 @@ func number_parityDirectSetup(mockres any) *number_parityDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ISEVEN_TEST_NUMBER_PARITY_ENTID": map[string]any{},
 		"ISEVEN_TEST_LIVE":    "FALSE",
+		"ISEVEN_APIKEY":       "NONE",
 	})
 
 	live := env["ISEVEN_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ISEVEN_APIKEY"],
 		}
 		client := sdk.NewIsEvenSDK(mergedOpts)
 

@@ -17,26 +17,7 @@ main: {
       termsOfService: "https://isevenapi.xyz/"
       title: "Is Even API"
       version: "1.0.0"
-      tagline: "Check whether an integer is even or odd via a single GET request"
-      homepage: "https://isevenapi.xyz/"
-      docs_url: "https://isevenapi.xyz/"
-      license_short: "License not specified; copyright (c) 2020 Tanner."
-      license_md: `- No explicit open-source licence is published on the API homepage.
-- The homepage shows a copyright notice: (c) 2020 Tanner.
-- Treat the service as a third-party hosted API; review the homepage before redistribution or commercial use.`
-      about_md: `The [Is Even API](https://isevenapi.xyz/) is a small joke/utility web service that answers a single question: is the number you sent even? It is hosted at \`https://api.isevenapi.xyz/api\` and is open to the public without authentication.
-
-What you get from the API:
-
-- A single \`GET /iseven/{number}/\` endpoint that returns JSON.
-- An \`iseven\` boolean field indicating parity of the integer you passed.
-- An \`ad\` string field on the free tier, containing a sponsored message.
-
-The documentation describes three tiers (Public/free, Premium, Enterprise) that differ in the maximum supported integer range; the free tier covers \`0\` to \`999,999\`. Negative numbers are supported. CORS is enabled, no API key is required for the free tier, and rate limits are not published.`
-      entity_desc: {
-        number_parity: "Represents the even/odd check for a single integer; served by `GET /iseven/{number}/` and returning a JSON object with an `iseven` boolean (plus an `ad` string on the free tier)."
-      }
-      auth: false
     }
   }
 }
+

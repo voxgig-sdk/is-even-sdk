@@ -33,10 +33,12 @@ client = IsEvenSDK()
 
 ### 3. Load a numberparity
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.numberparity.load({"id": "example_id"})
-    print(result)
+    numberparity = client.NumberParity().load({"id": "example_id"})
+    print(numberparity)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = IsEvenSDK.test()
 
-result = client.numberparity.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+numberparity = client.NumberParity().load({"id": "test01"})
+# numberparity contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -219,7 +222,7 @@ API path: `/iseven/{number}/`
 
 ### NumberParity
 
-Create an instance: `const number_parity = client.number_parity`
+Create an instance: `number_parity = client.NumberParity()`
 
 #### Operations
 
@@ -236,8 +239,8 @@ Create an instance: `const number_parity = client.number_parity`
 
 #### Example: Load
 
-```ts
-const number_parity = await client.number_parity.load({ id: 'number_parity_id' })
+```python
+number_parity = client.NumberParity().load({"id": "number_parity_id"})
 ```
 
 
@@ -311,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-numberparity = client.numberparity
+numberparity = client.NumberParity()
 numberparity.load({"id": "example_id"})
 
 # numberparity.data_get() now returns the loaded numberparity data

@@ -26,9 +26,9 @@ import { IsEvenSDK } from '@voxgig-sdk/is-even'
 
 const client = new IsEvenSDK()
 
-// Load numberparity data
-const numberparity = await client.numberparity.load({})
-console.log(numberparity.data)
+// Load numberparity data (returns a NumberParity)
+const numberparity = await client.NumberParity().load()
+console.log(numberparity)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from iseven_sdk import IsEvenSDK
 client = IsEvenSDK()
 
 
-# Load a specific numberparity
-numberparity = client.numberparity.load({"id": "example_id"})
+# Load a specific numberparity (returns the record, raises on error)
+numberparity = client.NumberParity().load({"id": "example_id"})
 print(numberparity)
 ```
 
@@ -98,8 +98,8 @@ require_once 'iseven_sdk.php';
 $client = new IsEvenSDK();
 
 
-// Load a specific numberparity
-$numberparity = $client->numberparity()->load(["id" => "example_id"]);
+// Load a specific numberparity (returns the bare record; throws on error)
+$numberparity = $client->NumberParity()->load(["id" => "example_id"]);
 print_r($numberparity);
 ```
 
@@ -123,8 +123,8 @@ require_relative "IsEven_sdk"
 client = IsEvenSDK.new
 
 
-# Load a specific numberparity
-numberparity = client.numberparity.load({ "id" => "example_id" })
+# Load a specific numberparity (returns the bare record; raises on error)
+numberparity = client.NumberParity.load({ "id" => "example_id" })
 puts numberparity
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific numberparity
-local numberparity, err = client:numberparity():load({ id = "example_id" })
+local numberparity, err = client:NumberParity():load({ id = "example_id" })
 print(numberparity)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = IsEvenSDK.test()
-const result = await client.numberparity.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const numberparity = await client.NumberParity().load({ id: 'test01' })
+// numberparity is a bare NumberParity populated with mock data
+console.log(numberparity)
 ```
 
 ### Python
 
 ```python
 client = IsEvenSDK.test()
-result = client.numberparity.load({"id": "test01"})
+numberparity = client.NumberParity().load({"id": "test01"})
+print(numberparity)
 ```
 
 ### PHP
 
 ```php
-$client = IsEvenSDK::test();
-$result = $client->numberparity()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = IsEvenSDK::test([
+    "entity" => ["numberparity" => ["test01" => ["id" => "test01"]]],
+]);
+$numberparity = $client->NumberParity()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.NumberParity(nil).Load(
 ### Ruby
 
 ```ruby
-client = IsEvenSDK.test
-result = client.numberparity.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = IsEvenSDK.test({
+  "entity" => { "numberparity" => { "test01" => { "id" => "test01" } } },
+})
+numberparity = client.NumberParity.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:numberparity():load({ id = "test01" })
+local result, err = client:NumberParity():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

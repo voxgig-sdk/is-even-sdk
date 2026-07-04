@@ -220,25 +220,15 @@ class IsEvenSDK:
         }
 
 
-    @property
-    def number_parity(self):
-        """Idiomatic facade: client.number_parity.list() / client.number_parity.load({"id": ...})."""
-        from entity.number_parity_entity import NumberParityEntity
-        cached = getattr(self, "_number_parity", None)
-        if cached is None:
-            cached = NumberParityEntity(self, None)
-            self._number_parity = cached
-        return cached
-
-    def NumberParity(self, data=None):
-        # Deprecated: use client.number_parity instead.
+    def NumberParity(self, data=None) -> "NumberParityEntity":
+        """Entity factory: client.NumberParity().list({}) / client.NumberParity().load({"id": ...})."""
         from entity.number_parity_entity import NumberParityEntity
         return NumberParityEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "IsEvenSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class IsEvenSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.number_parity_entity import NumberParityEntity

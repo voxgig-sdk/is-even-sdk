@@ -208,13 +208,7 @@ class IsEvenSDK
   end
 
 
-  # Idiomatic facade: client.number_parity.list / client.number_parity.load({ "id" => ... })
-  def number_parity
-    require_relative 'entity/number_parity_entity'
-    @number_parity ||= NumberParityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.number_parity instead.
+  # Canonical facade: client.NumberParity.list / client.NumberParity.load({ "id" => ... })
   def NumberParity(data = nil)
     require_relative 'entity/number_parity_entity'
     NumberParityEntity.new(self, data)

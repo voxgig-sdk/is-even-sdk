@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## NumberParityEntity
 
 ```python
-number_parity = client.number_parity
+number_parity = client.NumberParity()
 ```
 
 ### Fields
@@ -97,7 +97,7 @@ number_parity = client.number_parity
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.number_parity.load({"id": "number_parity_id"})
+result = client.NumberParity().load({"id": "number_parity_id"})
 ```
 
 ### Common Methods

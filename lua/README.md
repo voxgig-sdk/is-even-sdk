@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a numberparity
 
 ```lua
-local result, err = client:numberparity():load({ id = "example_id" })
+local numberparity, err = client:NumberParity():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(numberparity)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:numberparity():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:NumberParity():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -183,17 +183,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local number_parity, err = client:NumberParity():load({ id = "example_id" })
+    if err then error(err) end
+    -- number_parity is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -215,7 +220,7 @@ API path: `/iseven/{number}/`
 
 ### NumberParity
 
-Create an instance: `const number_parity = client.number_parity`
+Create an instance: `local number_parity = client:NumberParity(nil)`
 
 #### Operations
 
@@ -232,8 +237,8 @@ Create an instance: `const number_parity = client.number_parity`
 
 #### Example: Load
 
-```ts
-const number_parity = await client.number_parity.load({ id: 'number_parity_id' })
+```lua
+local number_parity, err = client:NumberParity():load({ id = "number_parity_id" })
 ```
 
 
@@ -308,7 +313,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local numberparity = client:numberparity()
+local numberparity = client:NumberParity()
 numberparity:load({ id = "example_id" })
 
 -- numberparity:data_get() now returns the loaded numberparity data

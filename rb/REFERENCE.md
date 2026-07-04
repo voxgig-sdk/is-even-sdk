@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## NumberParityEntity
 
 ```ruby
-number_parity = client.number_parity
+number_parity = client.NumberParity
 ```
 
 ### Fields
@@ -103,7 +103,7 @@ number_parity = client.number_parity
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.number_parity.load({ "id" => "number_parity_id" })
+result = client.NumberParity.load({ "id" => "number_parity_id" })
 ```
 
 ### Common Methods

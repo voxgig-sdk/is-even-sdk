@@ -109,7 +109,7 @@ Alias for `IsEvenSDK.test()`.
 ## NumberParityEntity
 
 ```ts
-const number_parity = client.number_parity
+const number_parity = client.NumberParity()
 ```
 
 ### Fields
@@ -126,7 +126,7 @@ const number_parity = client.number_parity
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.number_parity.load({ id: 'number_parity_id' })
+const result = await client.NumberParity().load({ id: 'number_parity_id' })
 ```
 
 ### Common Methods

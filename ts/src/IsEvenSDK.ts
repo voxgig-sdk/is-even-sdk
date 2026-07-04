@@ -204,14 +204,7 @@ class IsEvenSDK {
 
 
 
-  _number_parity?: NumberParityEntity
-
-  // Idiomatic facade: `client.number_parity.list()` / `client.number_parity.load({ id })`.
-  get number_parity(): NumberParityEntity {
-    return (this._number_parity ??= new NumberParityEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.number_parity` instead. */
+  // Entity access: `client.NumberParity().list()` / `client.NumberParity().load({ id })`.
   NumberParity(data?: any) {
     const self = this
     return new NumberParityEntity(self,data)

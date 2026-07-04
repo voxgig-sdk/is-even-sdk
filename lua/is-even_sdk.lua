@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:number_parity():list() / client:number_parity():load({ id = ... })
-function IsEvenSDK:number_parity(data)
+-- Idiomatic facade: client:NumberParity():list() / client:NumberParity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function IsEvenSDK:NumberParity(data)
   local EntityMod = require("entity.number_parity_entity")
   if data == nil then
     if self._number_parity == nil then
@@ -253,12 +254,6 @@ function IsEvenSDK:number_parity(data)
     end
     return self._number_parity
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:number_parity() instead.
-function IsEvenSDK:NumberParity(data)
-  local EntityMod = require("entity.number_parity_entity")
   return EntityMod.new(self, data)
 end
 

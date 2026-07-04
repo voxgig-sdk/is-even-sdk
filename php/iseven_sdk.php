@@ -233,10 +233,10 @@ class IsEvenSDK
 
     private $_number_parity = null;
 
-    // Idiomatic facade: $client->number_parity()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias NumberParity() (PHP method
-    // names are case-insensitive).
-    public function number_parity($data = null)
+    // Canonical facade: $client->NumberParity()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->number_parity()
+    // resolves here too.
+    public function NumberParity($data = null)
     {
         require_once __DIR__ . '/entity/number_parity_entity.php';
         if ($data === null) {

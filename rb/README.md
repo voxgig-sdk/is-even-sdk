@@ -32,8 +32,9 @@ client = IsEvenSDK.new
 
 ```ruby
 begin
-  result = client.numberparity.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare NumberParity record (raises on error).
+  numberparity = client.NumberParity.load({ "id" => "example_id" })
+  puts numberparity
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = IsEvenSDK.test
+client = IsEvenSDK.test({
+  "entity" => { "numberparity" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.numberparity.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+numberparity = client.NumberParity.load({ "id" => "test01" })
+puts numberparity
 ```
 
 ### Use a custom fetch function
@@ -219,7 +224,7 @@ API path: `/iseven/{number}/`
 
 ### NumberParity
 
-Create an instance: `const number_parity = client.number_parity`
+Create an instance: `number_parity = client.NumberParity`
 
 #### Operations
 
@@ -236,8 +241,9 @@ Create an instance: `const number_parity = client.number_parity`
 
 #### Example: Load
 
-```ts
-const number_parity = await client.number_parity.load({ id: 'number_parity_id' })
+```ruby
+# load returns the bare NumberParity record (raises on error).
+number_parity = client.NumberParity.load({ "id" => "number_parity_id" })
 ```
 
 
@@ -312,7 +318,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-numberparity = client.numberparity
+numberparity = client.NumberParity
 numberparity.load({ "id" => "example_id" })
 
 # numberparity.data_get now returns the loaded numberparity data

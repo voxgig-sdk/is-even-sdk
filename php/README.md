@@ -33,9 +33,10 @@ $client = new IsEvenSDK();
 
 ```php
 try {
-    $result = $client->numberparity()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare NumberParity record (throws on error).
+    $numberparity = $client->NumberParity()->load(["id" => "example_id"]);
+    print_r($numberparity);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = IsEvenSDK::test();
+$client = IsEvenSDK::test([
+    "entity" => ["numberparity" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->numberparity()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$numberparity = $client->NumberParity()->load(["id" => "test01"]);
+print_r($numberparity);
 ```
 
 ### Use a custom fetch function
@@ -224,7 +229,7 @@ API path: `/iseven/{number}/`
 
 ### NumberParity
 
-Create an instance: `const number_parity = client.number_parity`
+Create an instance: `$number_parity = $client->NumberParity();`
 
 #### Operations
 
@@ -241,8 +246,9 @@ Create an instance: `const number_parity = client.number_parity`
 
 #### Example: Load
 
-```ts
-const number_parity = await client.number_parity.load({ id: 'number_parity_id' })
+```php
+// load() returns the bare NumberParity record (throws on error).
+$number_parity = $client->NumberParity()->load(["id" => "number_parity_id"]);
 ```
 
 
@@ -317,7 +323,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$numberparity = $client->numberparity();
+$numberparity = $client->NumberParity();
 $numberparity->load(["id" => "example_id"]);
 
 // $numberparity->dataGet() now returns the loaded numberparity data

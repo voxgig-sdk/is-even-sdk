@@ -20,9 +20,6 @@ class IsEvenConfig
             ],
             "options" => [
                 "base" => "https://api.isevenapi.xyz/api",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -66,6 +63,7 @@ class IsEvenConfig
                         'orig' => 'number',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

@@ -15,9 +15,6 @@ module IsEvenConfig
       },
       "options" => {
         "base" => "https://api.isevenapi.xyz/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -61,6 +58,7 @@ module IsEvenConfig
                         "orig" => "number",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },

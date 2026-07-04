@@ -85,6 +85,27 @@ func (e *NumberParityEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an NumberParity; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *NumberParityEntity) DataTyped(data ...NumberParity) NumberParity {
+	if len(data) > 0 {
+		return typedFrom[NumberParity](e.Data(asMap(data[0])))
+	}
+	return typedFrom[NumberParity](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through NumberParity (all fields
+// optional at the wire level).
+func (e *NumberParityEntity) MatchTyped(match ...NumberParity) NumberParity {
+	if len(match) > 0 {
+		return typedFrom[NumberParity](e.Match(asMap(match[0])))
+	}
+	return typedFrom[NumberParity](e.Match())
+}
+
 
 func (e *NumberParityEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *NumberParityEntity) Load(reqmatch map[string]any, ctrl map[string]any) 
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// NumberParityLoadMatch and returns an NumberParity. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *NumberParityEntity) LoadTyped(reqmatch NumberParityLoadMatch, ctrl map[string]any) (NumberParity, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return NumberParity{}, err
+	}
+	return typedFrom[NumberParity](res), nil
 }
 
 

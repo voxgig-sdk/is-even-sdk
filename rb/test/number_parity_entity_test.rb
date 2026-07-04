@@ -42,8 +42,7 @@ class NumberParityEntityTest < Minitest::Test
     # LOAD
     number_parity_ref01_ent = client.NumberParity(nil)
     number_parity_ref01_match_dt0 = {}
-    number_parity_ref01_data_dt0_loaded, err = number_parity_ref01_ent.load(number_parity_ref01_match_dt0, nil)
-    assert_nil err
+    number_parity_ref01_data_dt0_loaded = number_parity_ref01_ent.load(number_parity_ref01_match_dt0, nil)
     assert !number_parity_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def number_parity_basic_setup(extra)
     "ISEVEN_TEST_NUMBER_PARITY_ENTID" => idmap,
     "ISEVEN_TEST_LIVE" => "FALSE",
     "ISEVEN_TEST_EXPLAIN" => "FALSE",
-    "ISEVEN_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def number_parity_basic_setup(extra)
   if env["ISEVEN_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ISEVEN_APIKEY"],
       },
       extra || {},
     ])

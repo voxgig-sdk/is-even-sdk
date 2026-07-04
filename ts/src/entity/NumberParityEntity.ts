@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  NumberParity,
+  NumberParityLoadMatch,
+} from '../IsEvenTypes'
 
 // TODO: needs Entity superclass
-class NumberParityEntity extends IsEvenEntityBase {
+class NumberParityEntity extends IsEvenEntityBase<NumberParity> {
 
   constructor(client: IsEvenSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class NumberParityEntity extends IsEvenEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: NumberParityLoadMatch, ctrl?: Control): Promise<NumberParity> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class NumberParityEntity extends IsEvenEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<NumberParity> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `IsEvenSDK.test()`.
 ## NumberParityEntity
 
 ```ts
-const number_parity = client.NumberParity()
+const number_parity = client.number_parity
 ```
 
 ### Fields
@@ -127,7 +126,7 @@ const number_parity = client.NumberParity()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NumberParity().load({ id: 'number_parity_id' })
+const result = await client.number_parity.load({ id: 'number_parity_id' })
 ```
 
 ### Common Methods

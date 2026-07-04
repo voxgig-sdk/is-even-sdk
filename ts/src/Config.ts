@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.isevenapi.xyz/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -90,7 +86,8 @@ class Config {
                     "name": "number",
                     "orig": "number",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

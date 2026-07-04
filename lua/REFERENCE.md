@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## NumberParityEntity
 
 ```lua
-local number_parity = client:NumberParity(nil)
+local number_parity = client:number_parity(nil)
 ```
 
 ### Fields
@@ -101,7 +100,7 @@ local number_parity = client:NumberParity(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NumberParity():load({ id = "number_parity_id" })
+local result, err = client:number_parity():load({ id = "number_parity_id" })
 ```
 
 ### Common Methods

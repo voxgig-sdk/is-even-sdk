@@ -49,8 +49,7 @@ class TestNumberParityEntity:
         # LOAD
         number_parity_ref01_ent = client.NumberParity(None)
         number_parity_ref01_match_dt0 = {}
-        number_parity_ref01_data_dt0_loaded, err = number_parity_ref01_ent.load(number_parity_ref01_match_dt0, None)
-        assert err is None
+        number_parity_ref01_data_dt0_loaded = number_parity_ref01_ent.load(number_parity_ref01_match_dt0, None)
         assert number_parity_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _number_parity_basic_setup(extra):
         "ISEVEN_TEST_NUMBER_PARITY_ENTID": idmap,
         "ISEVEN_TEST_LIVE": "FALSE",
         "ISEVEN_TEST_EXPLAIN": "FALSE",
-        "ISEVEN_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _number_parity_basic_setup(extra):
     if env.get("ISEVEN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ISEVEN_APIKEY"),
             },
             extra or {},
         ])

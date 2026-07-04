@@ -111,7 +111,6 @@ function basicSetup(extra?: any) {
     'IS_EVEN_TEST_NUMBER_PARITY_ENTID': idmap,
     'IS_EVEN_TEST_LIVE': 'FALSE',
     'IS_EVEN_TEST_EXPLAIN': 'FALSE',
-    'IS_EVEN_APIKEY': 'NONE',
   })
 
   idmap = env['IS_EVEN_TEST_NUMBER_PARITY_ENTID']
@@ -121,7 +120,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new IsEvenSDK(merge([
       {
-        apikey: env.IS_EVEN_APIKEY,
       },
       extra
     ]))

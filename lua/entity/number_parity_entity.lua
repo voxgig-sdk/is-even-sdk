@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch NumberParityLoadMatch
+---@param ctrl? table
+---@return NumberParity
+---@return string? err
 function NumberParityEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

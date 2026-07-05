@@ -90,8 +90,8 @@ local number_parity = client:NumberParity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | ``$STRING`` | No |  |
-| `iseven` | ``$BOOLEAN`` | Yes |  |
+| `ad` | `string` | No |  |
+| `iseven` | `boolean` | Yes |  |
 
 ### Operations
 
@@ -100,7 +100,7 @@ local number_parity = client:NumberParity(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NumberParity():load({ id = "number_parity_id" })
+local result, err = client:NumberParity():load()
 ```
 
 ### Common Methods

@@ -8,7 +8,7 @@ Complete API reference for the IsEven Python SDK.
 ### Constructor
 
 ```python
-from is-even_sdk import IsEvenSDK
+from iseven_sdk import IsEvenSDK
 
 client = IsEvenSDK(options)
 ```
@@ -87,8 +87,8 @@ number_parity = client.NumberParity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | ``$STRING`` | No |  |
-| `iseven` | ``$BOOLEAN`` | Yes |  |
+| `ad` | `str` | No |  |
+| `iseven` | `bool` | Yes |  |
 
 ### Operations
 
@@ -97,7 +97,7 @@ number_parity = client.NumberParity()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.NumberParity().load({"id": "number_parity_id"})
+result = client.NumberParity().load()
 ```
 
 ### Common Methods

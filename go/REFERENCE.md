@@ -97,8 +97,8 @@ number_parity := client.NumberParity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | ``$STRING`` | No |  |
-| `iseven` | ``$BOOLEAN`` | Yes |  |
+| `ad` | `string` | No |  |
+| `iseven` | `bool` | Yes |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ number_parity := client.NumberParity(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.NumberParity(nil).Load(map[string]any{"id": "number_parity_id"}, nil)
+result, err := client.NumberParity(nil).Load(nil, nil)
 ```
 
 ### Common Methods

@@ -221,7 +221,7 @@ class IsEvenSDK:
 
 
     def NumberParity(self, data=None) -> "NumberParityEntity":
-        """Entity factory: client.NumberParity().list({}) / client.NumberParity().load({"id": ...})."""
+        """Entity factory: client.NumberParity().list() / client.NumberParity().load({"id": ...})."""
         from entity.number_parity_entity import NumberParityEntity
         return NumberParityEntity(self, data)
 

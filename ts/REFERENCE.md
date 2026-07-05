@@ -116,8 +116,8 @@ const number_parity = client.NumberParity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | ``$STRING`` | No |  |
-| `iseven` | ``$BOOLEAN`` | Yes |  |
+| `ad` | `string` | No |  |
+| `iseven` | `boolean` | Yes |  |
 
 ### Operations
 
@@ -126,7 +126,7 @@ const number_parity = client.NumberParity()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NumberParity().load({ id: 'number_parity_id' })
+const result = await client.NumberParity().load()
 ```
 
 ### Common Methods

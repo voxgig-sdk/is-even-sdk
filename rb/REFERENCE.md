@@ -8,7 +8,7 @@ Complete API reference for the IsEven Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'is-even_sdk'
+require_relative 'IsEven_sdk'
 
 client = IsEvenSDK.new(options)
 ```
@@ -93,8 +93,8 @@ number_parity = client.NumberParity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | ``$STRING`` | No |  |
-| `iseven` | ``$BOOLEAN`` | Yes |  |
+| `ad` | `String` | No |  |
+| `iseven` | `Boolean` | Yes |  |
 
 ### Operations
 
@@ -103,7 +103,7 @@ number_parity = client.NumberParity
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.NumberParity.load({ "id" => "number_parity_id" })
+result = client.NumberParity.load()
 ```
 
 ### Common Methods

@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single numberparity — the value is the loaded record.
-    numberparity, err := client.NumberParity(nil).Load(nil, nil)
+    // Load a single numberParity — the value is the loaded record.
+    numberParity, err := client.NumberParity(nil).Load(map[string]any{"number": 1}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(numberparity)
+    fmt.Println(numberParity)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-numberparity, err := client.NumberParity(nil).Load(
+numberParity, err := client.NumberParity(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(numberparity) // the returned mock data
+fmt.Println(numberParity) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -245,9 +245,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    numberparity, err := client.NumberParity(nil).Load(nil, nil)
+    numberParity, err := client.NumberParity(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // numberparity is the returned record
+    // numberParity is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -272,7 +272,7 @@ API path: `/iseven/{number}/`
 
 ### NumberParity
 
-Create an instance: `number_parity := client.NumberParity(nil)`
+Create an instance: `numberParity := client.NumberParity(nil)`
 
 #### Operations
 
@@ -290,11 +290,11 @@ Create an instance: `number_parity := client.NumberParity(nil)`
 #### Example: Load
 
 ```go
-number_parity, err := client.NumberParity(nil).Load(nil, nil)
+numberParity, err := client.NumberParity(nil).Load(map[string]any{"number": 1}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(number_parity) // the loaded record
+fmt.Println(numberParity) // the loaded record
 ```
 
 

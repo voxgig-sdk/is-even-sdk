@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -223,15 +220,18 @@
           "email": "hello@isevenapi.xyz"
         },
         "description": "The Is Even API checks whether a given integer is even or odd. It provides a simple endpoint where you can submit a number and receive a response indicating its parity.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.isevenapi.xyz/api"
           }
         ],
+        "summary": "The Is Even API checks whether a given integer is even or odd.",
         "termsOfService": "https://isevenapi.xyz/",
         "title": "Is Even API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://isevenapi.xyz/"
       },
       "option": {},
       "target": {
@@ -284,6 +284,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -334,6 +337,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

@@ -32,10 +32,12 @@ client = IsEvenSDK.new
 
 ### 3. Load a numberparity
 
+NumberParity is nested under number, so provide the `number`.
+
 ```ruby
 begin
   # load returns the bare NumberParity record (raises on error).
-  numberparity = client.NumberParity.load()
+  numberparity = client.NumberParity.load({ "number" => 1 })
   puts numberparity
 rescue => err
   warn "load failed: #{err}"
@@ -267,7 +269,7 @@ Create an instance: `number_parity = client.NumberParity`
 
 ```ruby
 # load returns the bare NumberParity record (raises on error).
-number_parity = client.NumberParity.load()
+number_parity = client.NumberParity.load({ "number" => 1 })
 ```
 
 

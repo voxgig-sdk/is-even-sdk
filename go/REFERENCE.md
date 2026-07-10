@@ -90,7 +90,8 @@ same parameters as `Direct()`.
 ## NumberParityEntity
 
 ```go
-number_parity := client.NumberParity(nil)
+numberParity := client.NumberParity(nil)
+fmt.Println(numberParity.GetName()) // "number_parity"
 ```
 
 ### Fields
@@ -107,7 +108,11 @@ number_parity := client.NumberParity(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.NumberParity(nil).Load(nil, nil)
+result, err := client.NumberParity(nil).Load(map[string]any{"number": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

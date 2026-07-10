@@ -103,7 +103,7 @@ number_parity = client.NumberParity
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.NumberParity.load()
+result = client.NumberParity.load({ "number" => 1 })
 ```
 
 ### Common Methods

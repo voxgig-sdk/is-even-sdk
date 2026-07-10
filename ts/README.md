@@ -35,11 +35,14 @@ const client = new IsEvenSDK()
 
 ### 3. Load a numberparity
 
+NumberParity is nested under number, so provide the `number`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const numberparity = await client.NumberParity().load()
+  const numberparity = await client.NumberParity().load({
+    number: 1,
+  })
   console.log(numberparity)
 } catch (err) {
   console.error('load failed:', err)
@@ -316,7 +319,7 @@ Create an instance: `const number_parity = client.NumberParity()`
 #### Example: Load
 
 ```ts
-const number_parity = await client.NumberParity().load()
+const number_parity = await client.NumberParity().load({ number: 1 })
 ```
 
 

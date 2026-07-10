@@ -15,10 +15,10 @@ main: {
           url: "https://api.isevenapi.xyz/api"
         }
       ]
+      summary: "The Is Even API checks whether a given integer is even or odd."
       termsOfService: "https://isevenapi.xyz/"
       title: "Is Even API"
       version: "1.0.0"
+      website: "https://isevenapi.xyz/"
     }
   }
-}
-

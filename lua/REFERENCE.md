@@ -100,7 +100,7 @@ local number_parity = client:NumberParity(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:NumberParity():load()
+local result, err = client:NumberParity():load({ number = 1 })
 ```
 
 ### Common Methods

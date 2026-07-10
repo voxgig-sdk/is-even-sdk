@@ -35,8 +35,10 @@ local client = sdk.new()
 
 ### 3. Load a numberparity
 
+NumberParity is nested under number, so provide the `number`.
+
 ```lua
-local numberparity, err = client:NumberParity():load()
+local numberparity, err = client:NumberParity():load({ number = 1 })
 if err then error(err) end
 print(numberparity)
 ```
@@ -257,7 +259,7 @@ Create an instance: `local number_parity = client:NumberParity(nil)`
 #### Example: Load
 
 ```lua
-local number_parity, err = client:NumberParity():load()
+local number_parity, err = client:NumberParity():load({ number = 1 })
 ```
 
 

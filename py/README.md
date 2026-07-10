@@ -38,11 +38,12 @@ client = IsEvenSDK()
 
 ### 3. Load a numberparity
 
+NumberParity is nested under number, so provide the `number`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    numberparity = client.NumberParity().load()
+    numberparity = client.NumberParity().load({"number": 1})
     print(numberparity)
 except Exception as err:
     print(f"load failed: {err}")
@@ -272,7 +273,7 @@ Create an instance: `number_parity = client.NumberParity()`
 #### Example: Load
 
 ```python
-number_parity = client.NumberParity().load()
+number_parity = client.NumberParity().load({"number": 1})
 ```
 
 

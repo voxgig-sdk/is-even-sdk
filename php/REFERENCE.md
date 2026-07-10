@@ -102,7 +102,7 @@ $number_parity = $client->NumberParity();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->NumberParity()->load();
+$result = $client->NumberParity()->load(["number" => 1]);
 ```
 
 ### Common Methods

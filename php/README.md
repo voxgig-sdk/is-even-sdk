@@ -33,10 +33,12 @@ $client = new IsEvenSDK();
 
 ### 3. Load a numberparity
 
+NumberParity is nested under number, so provide the `number`.
+
 ```php
 try {
     // load() returns the bare NumberParity record (throws on error).
-    $numberparity = $client->NumberParity()->load();
+    $numberparity = $client->NumberParity()->load(["number" => 1]);
     print_r($numberparity);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -277,7 +279,7 @@ Create an instance: `$number_parity = $client->NumberParity();`
 
 ```php
 // load() returns the bare NumberParity record (throws on error).
-$number_parity = $client->NumberParity()->load();
+$number_parity = $client->NumberParity()->load(["number" => 1]);
 ```
 
 

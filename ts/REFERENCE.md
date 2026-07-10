@@ -126,7 +126,7 @@ const number_parity = client.NumberParity()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.NumberParity().load()
+const result = await client.NumberParity().load({ number: 1 })
 ```
 
 ### Common Methods

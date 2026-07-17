@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- IsEven SDK exists test
 
 local sdk = require("is-even_sdk")
 

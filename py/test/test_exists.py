@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# IsEven SDK exists test
 
 import pytest
 from iseven_sdk import IsEvenSDK

@@ -67,11 +67,11 @@ def number_parity_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "ISEVEN_TEST_NUMBER_PARITY_ENTID" => {},
-    "ISEVEN_TEST_LIVE" => "FALSE",
+    "IS_EVEN_TEST_NUMBER_PARITY_ENTID" => {},
+    "IS_EVEN_TEST_LIVE" => "FALSE",
   })
 
-  live = env["ISEVEN_TEST_LIVE"] == "TRUE"
+  live = env["IS_EVEN_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

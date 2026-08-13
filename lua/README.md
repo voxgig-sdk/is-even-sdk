@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local numberparity, err = client:NumberParity():load()
+local numberparity, err = client:NumberParity():load({ number = 1 })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:NumberParity():load()
+local result, err = client:NumberParity():load({ number = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -340,7 +340,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local numberparity = client:NumberParity()
-numberparity:load()
+numberparity:load({ number = 1 })
 
 -- numberparity:data_get() now returns the numberparity data from the last load
 -- numberparity:match_get() returns the last match criteria

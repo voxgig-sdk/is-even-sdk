@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import IsEvenSDK
-from core.error import IsEvenError
-from core.result import IsEvenResult
-from core.response import IsEvenResponse
-from core.spec import IsEvenSpec
-from feature.base_feature import IsEvenBaseFeature
+from projectname_sdk.core.error import IsEvenError
+from projectname_sdk.core.result import IsEvenResult
+from projectname_sdk.core.response import IsEvenResponse
+from projectname_sdk.core.spec import IsEvenSpec
+from projectname_sdk.feature.base_feature import IsEvenBaseFeature
 
 
 def _client():

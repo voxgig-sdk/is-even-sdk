@@ -37,7 +37,7 @@ NumberParity is nested under number, so provide the `number`.
 
 ```php
 try {
-    // load() returns the bare NumberParity record (throws on error).
+    // load() returns the ENTITY — call data_get() for the NumberParity record (throws on error).
     $numberparity = $client->NumberParity()->load(["number" => 1]);
     print_r($numberparity);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $numberparity = $client->NumberParity()->load();
+    $numberparity = $client->NumberParity()->load(["number" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,8 +125,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = IsEvenSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$numberparity = $client->NumberParity()->load();
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$numberparity = $client->NumberParity()->load(["number" => 1]);
 print_r($numberparity);
 ```
 
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -278,7 +279,7 @@ Create an instance: `$number_parity = $client->NumberParity();`
 #### Example: Load
 
 ```php
-// load() returns the bare NumberParity record (throws on error).
+// load() returns the ENTITY — call data_get() for the NumberParity record (throws on error).
 $number_parity = $client->NumberParity()->load(["number" => 1]);
 ```
 
@@ -360,7 +361,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $numberparity = $client->NumberParity();
-$numberparity->load();
+$numberparity->load(["number" => 1]);
 
 // $numberparity->data_get() now returns the numberparity data from the last load
 // $numberparity->match_get() returns the last match criteria

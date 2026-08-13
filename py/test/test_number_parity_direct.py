@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from iseven_sdk.utility.voxgig_struct import voxgig_struct as vs
 from iseven_sdk import IsEvenSDK
-from core import helpers
+from iseven_sdk.core import helpers
 from test import runner
 
 
@@ -63,11 +63,11 @@ def _number_parity_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ISEVEN_TEST_NUMBER_PARITY_ENTID": {},
-        "ISEVEN_TEST_LIVE": "FALSE",
+        "IS_EVEN_TEST_NUMBER_PARITY_ENTID": {},
+        "IS_EVEN_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ISEVEN_TEST_LIVE") == "TRUE"
+    live = env.get("IS_EVEN_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new IsEvenSDK()
-const numberparity = await client.NumberParity().load()
+const numberparity = await client.NumberParity().load({ number: 1 })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = IsEvenSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = IsEvenSDK.test({
+  entity: {
+    number_parity: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const numberparity = await client.NumberParity().load({ number: 1 })
-// numberparity is a bare NumberParity populated with mock data
+// numberparity is the NumberParity entity, populated with mock data
+// — call numberparity.data() for the record itself
 console.log(numberparity)
 ```
 
@@ -185,7 +194,7 @@ require_once 'iseven_sdk.php';
 $client = new IsEvenSDK();
 
 
-// Load a specific numberparity (returns the bare record; throws on error)
+// Load a specific numberparity (returns the ENTITY; call data_get() for the record; throws on error)
 $numberparity = $client->NumberParity()->load(["number" => 1]);
 print_r($numberparity);
 ```
@@ -216,7 +225,7 @@ require_relative "IsEven_sdk"
 client = IsEvenSDK.new
 
 
-# Load a specific numberparity (returns the bare record; raises on error)
+# Load a specific numberparity (returns the ENTITY; call data_get for the record)
 numberparity = client.NumberParity.load({ "number" => 1 })
 puts numberparity
 ```
@@ -350,6 +359,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.isevenapi.xyz/api](https://api.isevenapi.xyz/api)
 

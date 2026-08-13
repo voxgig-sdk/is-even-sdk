@@ -23,8 +23,8 @@ module IsEvenTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ISEVEN_TEST_LIVE")
-    override = getenv("ISEVEN_TEST_OVERRIDE")
+    live = getenv("IS_EVEN_TEST_LIVE")
+    override = getenv("IS_EVEN_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module IsEvenTestRunner
       end
     end
 
-    explain = getenv("ISEVEN_TEST_EXPLAIN")
-    m["ISEVEN_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("IS_EVEN_TEST_EXPLAIN")
+    m["IS_EVEN_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

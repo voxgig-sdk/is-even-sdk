@@ -61,6 +61,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/iseven/{number}/",
                 ["parts"] = {

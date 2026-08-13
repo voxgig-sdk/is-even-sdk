@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import IsEvenControl
-from core.error import IsEvenError
-from core.result import IsEvenResult
-from core.spec import IsEvenSpec
+from iseven_sdk.config import make_config
+from iseven_sdk.features import _make_feature
+from iseven_sdk.core.control import IsEvenControl
+from iseven_sdk.core.error import IsEvenError
+from iseven_sdk.core.result import IsEvenResult
+from iseven_sdk.core.spec import IsEvenSpec
 
 
 # True when this SDK was generated with the named feature.

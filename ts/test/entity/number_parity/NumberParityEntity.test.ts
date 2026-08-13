@@ -26,8 +26,8 @@ import {
 describe('NumberParityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ISEVEN_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ISEVEN_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when IS_EVEN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('IS_EVEN_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = IsEvenSDK.test()

@@ -56,7 +56,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const numberparity = await client.NumberParity().load()
+  const numberparity = await client.NumberParity().load({ number: 1 })
   console.log(numberparity)
 } catch (err) {
   console.error('load failed:', err)
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = IsEvenSDK.test()
 
-const numberparity = await client.NumberParity().load()
-// numberparity is a bare entity populated with mock response data
+const numberparity = await client.NumberParity().load({ number: 1 })
+// numberparity is the entity, populated with mock response data
+// — call numberparity.data() for the record itself
 console.log(numberparity)
 ```
 
@@ -143,7 +144,7 @@ Entity instances remember their last match and data:
 const entity = client.NumberParity()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ number: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -393,7 +394,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const numberparity = client.NumberParity()
-await numberparity.load()
+await numberparity.load({ number: 1 })
 
 // numberparity.data() now returns the numberparity data from the last `load`
 // numberparity.match() returns the last match criteria

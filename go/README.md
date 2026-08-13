@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-numberparity, err := client.NumberParity(nil).Load(nil, nil)
+numberparity, err := client.NumberParity(nil).Load(map[string]any{"number": 1}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 numberParity, err := client.NumberParity(nil).Load(
-    nil, nil,
+    map[string]any{"number": 1}, nil,
 )
 if err != nil {
     panic(err)
@@ -372,7 +372,7 @@ stores the returned data and match criteria internally.
 
 ```go
 numberparity := client.NumberParity(nil)
-numberparity.Load(nil, nil)
+numberparity.Load(map[string]any{"number": 1}, nil)
 
 // numberparity.Data() now returns the numberparity data from the last load
 // numberparity.Match() returns the last match criteria

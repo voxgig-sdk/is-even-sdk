@@ -62,6 +62,7 @@ module IsEvenConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/iseven/{number}/",
                   "parts" => [

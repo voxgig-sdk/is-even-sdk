@@ -36,7 +36,7 @@ NumberParity is nested under number, so provide the `number`.
 
 ```ruby
 begin
-  # load returns the bare NumberParity record (raises on error).
+  # load returns the ENTITY — call data_get for the NumberParity record (raises on error).
   numberparity = client.NumberParity.load({ "number" => 1 })
   puts numberparity
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  numberparity = client.NumberParity.load()
+  numberparity = client.NumberParity.load({ "number" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,8 +119,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = IsEvenSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-numberparity = client.NumberParity.load()
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+numberparity = client.NumberParity.load({ "number" => 1 })
 puts numberparity
 ```
 
@@ -268,7 +269,7 @@ Create an instance: `number_parity = client.NumberParity`
 #### Example: Load
 
 ```ruby
-# load returns the bare NumberParity record (raises on error).
+# load returns the ENTITY — call data_get for the NumberParity record (raises on error).
 number_parity = client.NumberParity.load({ "number" => 1 })
 ```
 
@@ -350,7 +351,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 numberparity = client.NumberParity
-numberparity.load()
+numberparity.load({ "number" => 1 })
 
 # numberparity.data_get now returns the numberparity data from the last load
 # numberparity.match_get returns the last match criteria

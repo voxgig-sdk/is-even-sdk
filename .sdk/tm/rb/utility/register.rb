@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ IsEvenUtility.registrar = ->(u) {
   u.prepare_params = IsEvenUtilities::PrepareParams
   u.prepare_path = IsEvenUtilities::PreparePath
   u.prepare_query = IsEvenUtilities::PrepareQuery
+  u.graphql_body = IsEvenUtilities::GraphqlBody
+  u.graphql_errors = IsEvenUtilities::GraphqlErrors
   u.result_basic = IsEvenUtilities::ResultBasic
   u.result_body = IsEvenUtilities::ResultBody
   u.result_headers = IsEvenUtilities::ResultHeaders

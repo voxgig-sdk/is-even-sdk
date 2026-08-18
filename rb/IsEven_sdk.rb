@@ -28,7 +28,7 @@ class IsEvenSDK
     utility = IsEvenUtility.new
     @_utility = utility
 
-    config = IsEvenConfig.make_config
+    config = IsEvenConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

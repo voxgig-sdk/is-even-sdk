@@ -1,5 +1,8 @@
 -- IsEven SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -25,18 +28,13 @@ local function make_config()
       ["number_parity"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "ad",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "iseven",
             ["req"] = true,
             ["type"] = "`$BOOLEAN`",
-            ["index$"] = 1,
           },
         },
         ["name"] = "number_parity",
@@ -46,18 +44,15 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["example"] = 6,
                       ["kind"] = "param",
                       ["name"] = "number",
                       ["orig"] = "number",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -77,10 +72,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

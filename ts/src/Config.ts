@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.isevenapi.xyz/api',
+    base: "https://api.isevenapi.xyz/api",
 
     headers: {
       "content-type": "application/json"
@@ -55,18 +55,13 @@ class Config {
     "number_parity": {
       "fields": [
         {
-          "active": true,
           "name": "ad",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "iseven",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         }
       ],
       "name": "number_parity",
@@ -76,18 +71,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": 6,
                     "kind": "param",
                     "name": "number",
                     "orig": "number",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "index$": 0
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -106,11 +98,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

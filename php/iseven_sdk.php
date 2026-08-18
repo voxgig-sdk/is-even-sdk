@@ -40,7 +40,7 @@ class IsEvenSDK
         $utility = new IsEvenUtility();
         $this->_utility = $utility;
 
-        $config = IsEvenConfig::make_config();
+        $config = IsEvenConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

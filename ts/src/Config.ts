@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'IsEven',
+        slug: "is-even",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,11 +67,13 @@ class Config {
       "fields": [
         {
           "name": "ad",
+          "short": "Advertisement text (present in free tier, removed in Premium and Enterprise tiers)",
           "type": "`$STRING`"
         },
         {
           "name": "iseven",
           "req": true,
+          "short": "True if the number is even, false if odd",
           "type": "`$BOOLEAN`"
         }
       ],

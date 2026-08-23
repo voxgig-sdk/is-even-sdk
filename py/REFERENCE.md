@@ -87,8 +87,8 @@ number_parity = client.NumberParity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | `str` | No |  |
-| `iseven` | `bool` | Yes |  |
+| `ad` | `str` | No | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `bool` | Yes | True if the number is even, false if odd |
 
 ### Operations
 

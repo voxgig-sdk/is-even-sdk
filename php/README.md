@@ -247,8 +247,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `ad` |  |
-| `iseven` |  |
+| `ad` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | True if the number is even, false if odd |
 
 Operations: Load.
 
@@ -273,8 +273,8 @@ Create an instance: `$number_parity = $client->NumberParity();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ad` | `string` |  |
-| `iseven` | `bool` |  |
+| `ad` | `string` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `bool` | True if the number is even, false if odd |
 
 #### Example: Load
 

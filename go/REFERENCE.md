@@ -98,8 +98,8 @@ fmt.Println(numberParity.GetName()) // "number_parity"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | `string` | No |  |
-| `iseven` | `bool` | Yes |  |
+| `ad` | `string` | No | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `bool` | Yes | True if the number is even, false if odd |
 
 ### Operations
 

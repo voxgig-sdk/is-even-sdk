@@ -6,7 +6,7 @@ The Golang SDK for the IsEven API — an entity-oriented client using standard G
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.NumberParity(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,8 +258,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"ad"` |  |
-| `"iseven"` |  |
+| `"ad"` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `"iseven"` | True if the number is even, false if odd |
 
 Operations: Load.
 
@@ -284,8 +284,8 @@ Create an instance: `numberParity := client.NumberParity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ad` | `string` |  |
-| `iseven` | `bool` |  |
+| `ad` | `string` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `bool` | True if the number is even, false if odd |
 
 #### Example: Load
 

@@ -237,8 +237,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `ad` |  |
-| `iseven` |  |
+| `ad` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | True if the number is even, false if odd |
 
 Operations: Load.
 
@@ -263,8 +263,8 @@ Create an instance: `number_parity = client.NumberParity`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ad` | `String` |  |
-| `iseven` | `Boolean` |  |
+| `ad` | `String` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `Boolean` | True if the number is even, false if odd |
 
 #### Example: Load
 

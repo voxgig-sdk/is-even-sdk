@@ -93,8 +93,8 @@ number_parity = client.NumberParity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | `String` | No |  |
-| `iseven` | `Boolean` | Yes |  |
+| `ad` | `String` | No | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `Boolean` | Yes | True if the number is even, false if odd |
 
 ### Operations
 

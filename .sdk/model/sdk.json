@@ -36,12 +36,14 @@
               "active": true,
               "name": "ad",
               "req": false,
+              "short": "Advertisement text (present in free tier, removed in Premium and Enterprise tiers)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "iseven",
               "req": true,
+              "short": "True if the number is even, false if odd",
               "type": "`$BOOLEAN`"
             }
           ],

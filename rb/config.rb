@@ -19,6 +19,9 @@ module IsEvenConfig
     {
       "main" => {
         "name" => "IsEven",
+        "slug" => "is-even",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,11 +44,13 @@ module IsEvenConfig
           "fields" => [
             {
               "name" => "ad",
+              "short" => "Advertisement text (present in free tier, removed in Premium and Enterprise tiers)",
               "type" => "`$STRING`",
             },
             {
               "name" => "iseven",
               "req" => true,
+              "short" => "True if the number is even, false if odd",
               "type" => "`$BOOLEAN`",
             },
           ],

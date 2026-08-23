@@ -116,8 +116,8 @@ const number_parity = client.NumberParity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `ad` | `string` | No |  |
-| `iseven` | `boolean` | Yes |  |
+| `ad` | `string` | No | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `boolean` | Yes | True if the number is even, false if odd |
 
 ### Operations
 

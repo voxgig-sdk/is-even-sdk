@@ -227,8 +227,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `ad` |  |
-| `iseven` |  |
+| `ad` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | True if the number is even, false if odd |
 
 Operations: Load.
 
@@ -253,8 +253,8 @@ Create an instance: `local number_parity = client:NumberParity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ad` | `string` |  |
-| `iseven` | `boolean` |  |
+| `ad` | `string` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `boolean` | True if the number is even, false if odd |
 
 #### Example: Load
 

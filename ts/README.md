@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -288,8 +288,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `ad` |  |
-| `iseven` |  |
+| `ad` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | True if the number is even, false if odd |
 
 Operations: load.
 
@@ -314,8 +314,8 @@ Create an instance: `const number_parity = client.NumberParity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `ad` | `string` |  |
-| `iseven` | `boolean` |  |
+| `ad` | `string` | Advertisement text (present in free tier, removed in Premium and Enterprise tiers) |
+| `iseven` | `boolean` | True if the number is even, false if odd |
 
 #### Example: Load
 

@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "IsEven",
+      slug = "is-even",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -29,11 +32,13 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "ad",
+            ["short"] = "Advertisement text (present in free tier, removed in Premium and Enterprise tiers)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "iseven",
             ["req"] = true,
+            ["short"] = "True if the number is even, false if odd",
             ["type"] = "`$BOOLEAN`",
           },
         },
